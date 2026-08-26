@@ -342,10 +342,7 @@ footer{padding:40px clamp(32px,7vw,120px);border-top:1px solid var(--line);color
 
       <!-- CITY layer (Sumy) — appears when zoomed in; authored at screen scale -->
       <g id="city" transform="translate(629,123) scale(0.1875)" opacity="0">
-        <!-- city extent (ring road) -->
-        <ellipse cx="0" cy="0" rx="198" ry="158" fill="var(--surface)" opacity=".28"/>
-        <ellipse cx="0" cy="0" rx="198" ry="158" fill="none" stroke="var(--line-2)" stroke-width="4"/>
-        <!-- city roads (inside the ring) -->
+        <!-- city streets (on the map, no boundary) -->
         <g stroke="var(--line-2)" fill="none" stroke-linecap="round">
           <path d="M-150,-68 H150" stroke-width="4.5"/>
           <path d="M-172,0 H172" stroke-width="6"/>
