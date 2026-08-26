@@ -343,27 +343,27 @@ footer{padding:40px clamp(32px,7vw,120px);border-top:1px solid var(--line);color
       <!-- CITY layer (Sumy) — appears when zoomed in; authored at screen scale -->
       <g id="city" transform="translate(629,123) scale(0.1875)" opacity="0">
         <!-- city extent (ring road) -->
-        <ellipse cx="0" cy="0" rx="190" ry="150" fill="var(--surface)" opacity=".28"/>
-        <ellipse cx="0" cy="0" rx="190" ry="150" fill="none" stroke="var(--line-2)" stroke-width="4"/>
-        <!-- city roads -->
+        <ellipse cx="0" cy="0" rx="198" ry="158" fill="var(--surface)" opacity=".28"/>
+        <ellipse cx="0" cy="0" rx="198" ry="158" fill="none" stroke="var(--line-2)" stroke-width="4"/>
+        <!-- city roads (inside the ring) -->
         <g stroke="var(--line-2)" fill="none" stroke-linecap="round">
-          <path d="M-165,-80 H165" stroke-width="4.5"/>
-          <path d="M-182,0 H182" stroke-width="6"/>
-          <path d="M-165,80 H165" stroke-width="4.5"/>
-          <path d="M-120,-120 V120" stroke-width="4.5"/>
-          <path d="M0,-145 V145" stroke-width="6"/>
-          <path d="M120,-120 V120" stroke-width="4.5"/>
-          <path d="M-150,-96 L150,96" stroke-width="2.5" opacity=".6"/>
-          <path d="M150,-96 L-150,96" stroke-width="2.5" opacity=".6"/>
+          <path d="M-150,-68 H150" stroke-width="4.5"/>
+          <path d="M-172,0 H172" stroke-width="6"/>
+          <path d="M-150,68 H150" stroke-width="4.5"/>
+          <path d="M-95,-120 V120" stroke-width="4.5"/>
+          <path d="M0,-140 V140" stroke-width="6"/>
+          <path d="M95,-120 V120" stroke-width="4.5"/>
+          <path d="M-128,-80 L128,80" stroke-width="2.5" opacity=".6"/>
+          <path d="M128,-80 L-128,80" stroke-width="2.5" opacity=".6"/>
         </g>
         <!-- delivery routes (within the city) -->
-        <path class="croute" d="M0,0 L-120,0 L-120,-80" fill="none" stroke="var(--accent-deep)" stroke-width="4" stroke-dasharray="6 7" opacity=".95"/>
-        <path class="croute" d="M0,0 L120,0 L120,-80" fill="none" stroke="var(--accent-deep)" stroke-width="4" stroke-dasharray="6 7" opacity=".95"/>
-        <path class="croute" d="M0,0 L0,80" fill="none" stroke="var(--accent-deep)" stroke-width="4" stroke-dasharray="6 7" opacity=".95"/>
-        <!-- delivery points (in the city) -->
-        <g transform="translate(-120,-80)"><circle r="9" fill="var(--ground)" stroke="var(--accent-deep)" stroke-width="3"/><circle r="3" fill="var(--accent-deep)"/></g>
-        <g transform="translate(120,-80)"><circle r="9" fill="var(--ground)" stroke="var(--accent-deep)" stroke-width="3"/><circle r="3" fill="var(--accent-deep)"/></g>
-        <g transform="translate(0,80)"><circle r="9" fill="var(--ground)" stroke="var(--accent-deep)" stroke-width="3"/><circle r="3" fill="var(--accent-deep)"/></g>
+        <path class="croute" d="M0,0 L-95,0 L-95,-68" fill="none" stroke="var(--accent-deep)" stroke-width="4" stroke-dasharray="6 7" opacity=".95"/>
+        <path class="croute" d="M0,0 L95,0 L95,-68" fill="none" stroke="var(--accent-deep)" stroke-width="4" stroke-dasharray="6 7" opacity=".95"/>
+        <path class="croute" d="M0,0 L0,68" fill="none" stroke="var(--accent-deep)" stroke-width="4" stroke-dasharray="6 7" opacity=".95"/>
+        <!-- delivery points (inside the city) -->
+        <g transform="translate(-95,-68)"><circle r="9" fill="var(--ground)" stroke="var(--accent-deep)" stroke-width="3"/><circle r="3" fill="var(--accent-deep)"/></g>
+        <g transform="translate(95,-68)"><circle r="9" fill="var(--ground)" stroke="var(--accent-deep)" stroke-width="3"/><circle r="3" fill="var(--accent-deep)"/></g>
+        <g transform="translate(0,68)"><circle r="9" fill="var(--ground)" stroke="var(--accent-deep)" stroke-width="3"/><circle r="3" fill="var(--accent-deep)"/></g>
         <!-- shelter at centre (smaller) -->
         <g transform="translate(0,-4) scale(0.8)">
           <path d="M-44,-4 L-38,-4 L-56,40 L-64,40 Z" fill="#8C857A"/>
