@@ -143,6 +143,24 @@ h1,h2{font-family:var(--f-display);font-weight:600;line-height:1.02;letter-spaci
 /* animated step dots (synced to 11s map cycle) */
 .step .dot.on{background:var(--accent)}
 
+.s5 h2{font-size:clamp(26px,3.6vw,46px);max-width:26ch}
+.eco{display:grid;gap:24px;margin-top:34px;max-width:1120px}
+.eco-tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.eco-tiles .t{background:var(--ground);padding:22px 24px}
+.eco-tiles .t .v{font-family:var(--f-display);font-weight:700;font-size:clamp(28px,3.4vw,46px);line-height:1;font-variant-numeric:tabular-nums}
+.eco-tiles .t .g{font-family:var(--f-mono);font-size:12px;color:var(--ink-2);margin-top:6px}
+.eco-tiles .t .k{font-family:var(--f-mono);font-size:11px;color:var(--ink-2);margin-top:12px;text-transform:uppercase;letter-spacing:.08em}
+.eco-cols{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.eco-tab{border:1px solid var(--line);background:var(--ground)}
+.eco-tab .hd{font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-deep);padding:12px 16px;border-bottom:1px solid var(--line)}
+.eco-tab table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+.eco-tab td{padding:9px 16px;border-top:1px solid var(--line);font-size:14px;color:var(--ink)}
+.eco-tab tr:first-child td{border-top:0}
+.eco-tab td:last-child{text-align:right;font-family:var(--f-mono);color:var(--ink-2)}
+.eco-tab tr.hl td{background:var(--surface);font-weight:500;color:var(--ink)}
+.eco-tab tr.hl td:last-child{color:var(--accent-deep)}
+.eco-note{font-family:var(--f-mono);font-size:11px;color:var(--ink-2);padding:10px 16px 13px;line-height:1.4}
+@media (max-width:860px){.eco-tiles{grid-template-columns:1fr}.eco-cols{grid-template-columns:1fr}}
 footer{padding:40px clamp(32px,7vw,120px);border-top:1px solid var(--line);color:var(--ink-2);font-family:var(--f-mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
 
 @media (max-width:860px){
@@ -173,6 +191,7 @@ footer{padding:40px clamp(32px,7vw,120px);border-top:1px solid var(--line);color
   <a href="#s2" data-i="2"><span class="lbl">Проблема</span><span class="num">02</span></a>
   <a href="#s3" data-i="3"><span class="lbl">Вирішення</span><span class="num">03</span></a>
   <a href="#s4" data-i="4"><span class="lbl">Як працює</span><span class="num">04</span></a>
+  <a href="#s5" data-i="5"><span class="lbl">Економіка</span><span class="num">05</span></a>
 </nav>
 
 <!-- ============ SLIDE 1 ============ -->
@@ -323,19 +342,28 @@ footer{padding:40px clamp(32px,7vw,120px);border-top:1px solid var(--line);color
 
       <!-- CITY layer (Sumy) — appears when zoomed in; authored at screen scale -->
       <g id="city" transform="translate(629,123) scale(0.1875)" opacity="0">
-        <!-- city streets (light, on the map — no card) -->
-        <g stroke="var(--line-2)" stroke-width="1.6" fill="none" opacity=".55" stroke-linecap="round">
-          <path d="M-360,-70 H360"/><path d="M-360,0 H360"/><path d="M-360,70 H360"/>
-          <path d="M-200,-220 V220"/><path d="M-90,-220 V220"/><path d="M0,-220 V220"/><path d="M90,-220 V220"/><path d="M200,-220 V220"/>
+        <!-- city extent (ring road) -->
+        <ellipse cx="0" cy="0" rx="190" ry="150" fill="var(--surface)" opacity=".28"/>
+        <ellipse cx="0" cy="0" rx="190" ry="150" fill="none" stroke="var(--line-2)" stroke-width="4"/>
+        <!-- city roads -->
+        <g stroke="var(--line-2)" fill="none" stroke-linecap="round">
+          <path d="M-165,-80 H165" stroke-width="4.5"/>
+          <path d="M-182,0 H182" stroke-width="6"/>
+          <path d="M-165,80 H165" stroke-width="4.5"/>
+          <path d="M-120,-120 V120" stroke-width="4.5"/>
+          <path d="M0,-145 V145" stroke-width="6"/>
+          <path d="M120,-120 V120" stroke-width="4.5"/>
+          <path d="M-150,-96 L150,96" stroke-width="2.5" opacity=".6"/>
+          <path d="M150,-96 L-150,96" stroke-width="2.5" opacity=".6"/>
         </g>
-        <!-- delivery routes along streets -->
-        <path class="croute" d="M0,0 L-200,0 L-200,-70" fill="none" stroke="var(--accent-deep)" stroke-width="3.5" stroke-dasharray="5 7" opacity=".95"/>
-        <path class="croute" d="M0,0 L200,0 L200,-70" fill="none" stroke="var(--accent-deep)" stroke-width="3.5" stroke-dasharray="5 7" opacity=".95"/>
-        <path class="croute" d="M0,0 L0,150" fill="none" stroke="var(--accent-deep)" stroke-width="3.5" stroke-dasharray="5 7" opacity=".95"/>
-        <!-- delivery points -->
-        <g transform="translate(-200,-70)"><circle r="9" fill="var(--ground)" stroke="var(--accent-deep)" stroke-width="3"/><circle r="3" fill="var(--accent-deep)"/></g>
-        <g transform="translate(200,-70)"><circle r="9" fill="var(--ground)" stroke="var(--accent-deep)" stroke-width="3"/><circle r="3" fill="var(--accent-deep)"/></g>
-        <g transform="translate(0,150)"><circle r="9" fill="var(--ground)" stroke="var(--accent-deep)" stroke-width="3"/><circle r="3" fill="var(--accent-deep)"/></g>
+        <!-- delivery routes (within the city) -->
+        <path class="croute" d="M0,0 L-120,0 L-120,-80" fill="none" stroke="var(--accent-deep)" stroke-width="4" stroke-dasharray="6 7" opacity=".95"/>
+        <path class="croute" d="M0,0 L120,0 L120,-80" fill="none" stroke="var(--accent-deep)" stroke-width="4" stroke-dasharray="6 7" opacity=".95"/>
+        <path class="croute" d="M0,0 L0,80" fill="none" stroke="var(--accent-deep)" stroke-width="4" stroke-dasharray="6 7" opacity=".95"/>
+        <!-- delivery points (in the city) -->
+        <g transform="translate(-120,-80)"><circle r="9" fill="var(--ground)" stroke="var(--accent-deep)" stroke-width="3"/><circle r="3" fill="var(--accent-deep)"/></g>
+        <g transform="translate(120,-80)"><circle r="9" fill="var(--ground)" stroke="var(--accent-deep)" stroke-width="3"/><circle r="3" fill="var(--accent-deep)"/></g>
+        <g transform="translate(0,80)"><circle r="9" fill="var(--ground)" stroke="var(--accent-deep)" stroke-width="3"/><circle r="3" fill="var(--accent-deep)"/></g>
         <!-- shelter at centre (smaller) -->
         <g transform="translate(0,-4) scale(0.8)">
           <path d="M-44,-4 L-38,-4 L-56,40 L-64,40 Z" fill="#8C857A"/>
@@ -350,8 +378,8 @@ footer{padding:40px clamp(32px,7vw,120px);border-top:1px solid var(--line);color
         <g class="ccar" opacity="0"><rect x="-8" y="-5" width="16" height="10" rx="2" fill="var(--ink-2)"/><rect x="-2" y="-5" width="7" height="10" rx="1" fill="var(--accent)"/></g>
         <g class="ccar" opacity="0"><rect x="-8" y="-5" width="16" height="10" rx="2" fill="var(--ink-2)"/><rect x="-2" y="-5" width="7" height="10" rx="1" fill="var(--accent)"/></g>
         <g class="ccar" opacity="0"><rect x="-8" y="-5" width="16" height="10" rx="2" fill="var(--ink-2)"/><rect x="-2" y="-5" width="7" height="10" rx="1" fill="var(--accent)"/></g>
-        <text x="0" y="-238" text-anchor="middle" font-size="22" font-weight="600" fill="var(--ink)" font-family="var(--f-display)" letter-spacing="1">СУМИ</text>
-        <text x="0" y="205" text-anchor="middle" font-size="13" fill="var(--ink-2)" letter-spacing="2">РОЗВІЗ ПО МІСТУ · ТОЧКИ ВИДАЧІ</text>
+        <text x="0" y="-172" text-anchor="middle" font-size="20" font-weight="600" fill="var(--ink)" font-family="var(--f-display)" letter-spacing="1">СУМИ</text>
+        <text x="0" y="182" text-anchor="middle" font-size="12" fill="var(--ink-2)" letter-spacing="2">РОЗВІЗ ПО МІСТУ · ТОЧКИ ВИДАЧІ</text>
       </g>
     </svg>
 
@@ -360,6 +388,39 @@ footer{padding:40px clamp(32px,7vw,120px);border-top:1px solid var(--line);color
       <div class="step b"><div class="h"><span class="dot"></span><span class="k">Б</span></div><div class="t">Магістраль</div><div class="d">Велика машина везе партію в хаб</div></div>
       <div class="step c"><div class="h"><span class="dot"></span><span class="k">В</span></div><div class="t">Склад-укриття</div><div class="d">Зберігання порціями під бетоном</div></div>
       <div class="step d"><div class="h"><span class="dot"></span><span class="k">Г</span></div><div class="t">Видача</div><div class="d">Ластмайл по точках видачі</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 5 ============ -->
+<section class="slide s5" id="s5">
+  <div class="eyebrow reveal">Слайд 05 <b>· Економіка</b></div>
+  <h2 class="reveal d1">Дохід з модуля — $698/міс, $8 381/рік</h2>
+  <div class="eco">
+    <div class="eco-tiles reveal d2">
+      <div class="t"><div class="v">$12</div><div class="g">~498 грн</div><div class="k">ставка за м² / міс</div></div>
+      <div class="t"><div class="v">$698</div><div class="g">~28 970 грн</div><div class="k">дохід з модуля / міс</div></div>
+      <div class="t"><div class="v">$8 381</div><div class="g">~347 800 грн</div><div class="k">дохід з модуля / рік</div></div>
+    </div>
+    <div class="eco-cols reveal d3">
+      <div class="eco-tab">
+        <div class="hd">Ринковий якір — Київ · незахищений склад</div>
+        <table>
+          <tr><td>Клас A (прайм)</td><td>$5,3 · ~220 грн</td></tr>
+          <tr><td>Клас B</td><td>$3,4 · ~141 грн</td></tr>
+          <tr><td>Середня (бленд A+B)</td><td>$4,35 · ~181 грн</td></tr>
+          <tr><td>Холодний склад</td><td>$8,5–10 · ~360–420</td></tr>
+          <tr class="hl"><td>Наша ставка</td><td>$12 = 2,76×</td></tr>
+        </table>
+      </div>
+      <div class="eco-tab">
+        <div class="hd">Капекс — орієнтир (модуль 118,5 м²)</div>
+        <table>
+          <tr><td>Звичайний склад (під ключ)</td><td>~$700/м² · ~$83 000</td></tr>
+          <tr><td>Захищена ЗБ споруда</td><td>~$1 660–1 740/м² · ~$197–206K</td></tr>
+        </table>
+        <div class="eco-note">Капекс — орієнтир, потребує реального кошторису.</div>
+      </div>
     </div>
   </div>
 </section>
